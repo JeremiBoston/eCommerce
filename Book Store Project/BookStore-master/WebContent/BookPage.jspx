@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto"></link>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+.w3-sidebar a {
+	font-family: "Roboto", sans-serif
+}
+
+body, h1, h2, h3, h4, h5, h6, .w3-wide {
+	font-family: "Montserrat", sans-serif;
+}
+</style>
+<title>Book Store</title>
+</head>
+<style>
+body, html {
+	height: 100%;
+	font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+	background-position: center;
+	background-size: 1300px 550px;
+	background-image:
+		url("http://res.cloudinary.com/thefader/image/upload/MIGOS-FADER-askew_02_pvmwsn.jpg");
+	min-height: 75%;
+}
+
+.menu {
+	display: none;
+}
+</style>
+<body>
+	<div class="w3-top">
+		<div class="w3-row w3-padding w3-black">
+			<form>
+				<div class="w3-col s3">
+					<c:choose>
+						<c:when test="${loggedIn}">
+							<input type="submit" name="logout" value="Logout"
+								class="w3-button w3-black"></input>
+						</c:when>
+						<c:otherwise>
+							<input type="submit" name="login" value="Login"
+								class="w3-button w3-black"></input>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div class="w3-col s3">
+					<input type="submit" name="register" value="Register"
+						class="w3-button w3-black"></input>
+				</div>
+				<div class="w3-col s3">
+					<button type="submit" name="shopping" value="Shopping Cart"
+						class="w3-button w3-black">Shopping
+						Cart(${requestScope.size})</button>
+				</div>
+				<div class="w3-col s3">
+					<a href="Start" class="w3-button w3-block w3-black">MainPage</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="w3-container" id="about">
+		<div class="w3-content" style="max-width: 700px">
+			<h5 class="w3-center w3-padding-64">
+				<span class="w3-tag w3-wide">${requestScope.title}</span>
+			</h5>
+
+			<c:forEach var="msg" items="${requestScope.messageList}">
+				<tr>
+					<div class="w3-panel w3-leftbar w3-light-grey">
+						<p>
+							<i>"
+								<td>${msg[3]}</td>
+							<td></td>"
+							</i>
+						</p>
+						<p>
+							Review by:
+							<td>${msg[2]}</td>
+						</p>
+						<p>${msg[4]}/5</p>
+					</div>
+
+
+
+				</tr>
+				<br />
+			</c:forEach>
+
+		</div>
+	</div>
+	<div class="w3-container" id="about">
+		<div class="w3-content" style="max-width: 700px">
+			<form>
+
+				<c:choose>
+
+					<c:when test="${reviewed}">
+						<h5>You have already reviewed this book</h5>
+					</c:when>
+					<c:when test="${loggedIn == false}">
+						<center>You must log in to review this</center>
+						<input type="submit" name="login" value="Login"
+							class="w3-button w3-black" style=""></input>
+					</c:when>
+
+					<c:otherwise>
+						<span class="error"><font color="red">${error}</font></span>
+						<input type="text" name="book" value="${requestScope.title}"
+							style="display: none;"></input>
+						<br />
+						<h5>Rating:</h5>
+
+						<select name="rating" class="w3-input w3-padding-16 w3-border">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<br />
+						<p>
+							<input type="text" name="review"
+								class="w3-input w3-padding-16 w3-border"
+								placeholder="Write Review Here"></input>
+						</p>
+						<br />
+						<input type="submit" name="addReview" value="Review"
+							class="w3-button w3-black"></input>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+
+			</form>
+		</div>
+	</div>
+
+
+
+
+</body>
+	</html>
+</jsp:root>

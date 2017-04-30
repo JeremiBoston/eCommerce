@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+	<form>
+
+</form>
+	All Purchases By Email
+	<table id="result" border="1">
+		<tr>
+			<th>Email</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Total</th>
+		</tr>
+		<c:forEach var="msg" items="${requestScope.messageList}">
+			<tr>
+				<td>${msg[0]}</td>
+				<td>${msg[1]}</td>
+				<td>${msg[2]}</td>
+				<td>${msg[3]}</td>
+			</tr>
+			<br />
+		</c:forEach>
+	</table>
+	
+	Get total purchased by email
+	
+	<table id="result" border="1">
+		<tr>
+			<th>Email</th>
+			<th>Total</th>
+		</tr>
+		<c:forEach var="msg" items="${requestScope.messageList1}">
+			<tr>
+				<td>${msg[0]}</td>
+				<td>${msg[1]}</td>
+			</tr>
+			<br />
+		</c:forEach>
+	</table>
+	Get most bought books
+
+	
+		<table id="result" border="1">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Total</th>
+		</tr>
+		<c:forEach var="msg" items="${requestScope.messageList2}">
+			<tr>
+				<td>${msg[0]}</td>
+				<td>${msg[1]}</td>
+				<td>${msg[2]}</td>
+			</tr>
+			<br />
+		</c:forEach>
+	</table>
+	
+		Get most popular books
+		<table id="result" border="1">
+		<tr>
+
+			<th>Title</th>
+			<th>Author</th>
+			<th>Total</th>
+		</tr>
+		<c:forEach var="msg" items="${requestScope.messageList3}">
+			<tr>
+				<td>${msg[0]}</td>
+				<td>${msg[1]}</td>
+				<td>${msg[2]}</td>
+			
+			</tr>
+			<br />
+		</c:forEach>
+	</table>
+</body>
+	</html>
+</jsp:root>

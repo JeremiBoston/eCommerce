@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"></link>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<title>Book Store</title>
+</head>
+<style>
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.bgimg {
+    background-position: center;
+    background-size: 1300px 550px;
+    background-image: url("http://res.cloudinary.com/thefader/image/upload/MIGOS-FADER-askew_02_pvmwsn.jpg");
+    min-height: 75%;
+}
+.menu {
+    display: none;
+}
+</style>
+<body>
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <form>
+    <div class="w3-col s3">
+      	<c:choose>
+			<c:when test="${loggedIn}"><input type="submit" name="logout" value="Logout" class="w3-button w3-black"></input></c:when>		
+			<c:otherwise><input type="submit" name="login" value="Login" class="w3-button w3-black"></input></c:otherwise>
+		</c:choose>
+    </div>
+    <div class="w3-col s3">
+      <input type="submit" name="register" value="Register" class="w3-button w3-black"></input>
+    </div>
+    <div class="w3-col s3">
+      <button type="submit" name="shopping" value="Shopping Cart" class="w3-button w3-black">Shopping Cart(${requestScope.size})</button>
+      </div>
+    <div class="w3-col s3">
+     <a><input type="text" size="16" name="search"></input> <input type="submit" name="searchButton" value="Search" class="w3-button w3-black"></input> </a>
+    </div>
+    </form>
+  </div>
+</div>
+
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Your Payement has completed</span></h5>
+    <center><h5>Here is your shipping label:</h5></center>
+    <center><h5>Ship to: xxx</h5></center>
+	<center><h5>From: xxx</h5></center>
+	<center><h5>Guaranteed shipping date: 03/04/17 </h5></center>
+</div>
+</div>	
+</body>
+</html>
+</jsp:root>
